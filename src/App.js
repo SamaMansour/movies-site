@@ -5,6 +5,7 @@ import Home from './views/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Details from './components/MovieDetail/Details';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/detail/:movieId' element={<Details/>}/>
+
         </Routes>
       </BrowserRouter>
    </>
