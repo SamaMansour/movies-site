@@ -23,7 +23,7 @@ const Home = (props) => {
   }
   return (
     <>
-    <SearchBox/>
+    
     <Discover/>
     </>
   );

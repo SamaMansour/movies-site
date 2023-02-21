@@ -4,6 +4,8 @@ import { Discover_URL ,img_url} from '../api';
 import Card from '../components/ItemCard';
 import {Link} from "react-router-dom";
 import MovieCard from '../components/MovieCard/MovieCard';
+import Slider from "react-slick";
+import sliderSettings from '../components/Slider';
 
 function Discover(props) {
   const [data, setData] = useState([]);
@@ -23,7 +25,7 @@ function Discover(props) {
     <>
       
       <div className="container-fluid row ">
-      
+        {/* <Slider {...sliderSettings}> */}
       {
         
         data?.results?.map((item,index)=>(
@@ -37,6 +39,7 @@ function Discover(props) {
          
         ))
       }
+      {/* </Slider> */}
     
       </div>
      
