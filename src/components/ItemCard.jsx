@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Di
 import { Link } from "react-router-dom";
 
 
-const ItemCard = ({img,releaseDate,title,id}) => {
+const ItemCard = ({img, overview,title,id}) => {
   return (
     <div>
       <Card maxW='sm'>
@@ -16,8 +16,8 @@ const ItemCard = ({img,releaseDate,title,id}) => {
           <Stack mt='6' spacing='3'>
             <Heading size='md'>{title}</Heading>
             <Link  to={"detail/"+{id}} style={{ color: 'black',textDecoration: 'none' }}> </Link>
-            <Text color='blue.600' fontSize='2xl'>
-              { releaseDate }
+            <Text>
+              { overview }
             </Text>
           </Stack>
         </CardBody>

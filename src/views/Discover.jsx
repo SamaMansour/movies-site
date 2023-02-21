@@ -30,7 +30,7 @@ function Discover(props) {
           console.log(item),
           <div key={index} className="col-sm-4 mb-2">
             <MovieCard/>
-          <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
+          <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} overview={item.overview} id={item.id}/></Link>
          {console.log(img_url+item.poster_path)}
          
         </div>
