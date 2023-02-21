@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SearchBox from '../components/SearchBox/SearchBox';
+import Discover from './Discover';
 
 const Home = (props) => {
   const [query, setQuery] = useState("");
@@ -21,7 +22,10 @@ const Home = (props) => {
     console.log("query",query);
   }
   return (
+    <>
     <SearchBox/>
+    <Discover/>
+    </>
   );
 }
 

@@ -3,8 +3,9 @@ import axios from "axios";
 export const BASE_API = axios.create({ baseURL: "https://api.themoviedb.org/3/"});
 const BASE_AXIOS = axios.create({baseURL: "https://api.themoviedb.org/3%22%7D"});
 
-const API_KEY = " d3fea0d49f7035466ab4c90405575aa0";
+const API_KEY = "d3fea0d49f7035466ab4c90405575aa0";
 
+export const img_url="http://image.tmdb.org/t/p/w500";
 export const Popular_URL =
   `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 export const Discover_URL =
