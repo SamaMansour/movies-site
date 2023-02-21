@@ -12,9 +12,8 @@ const Home = (props) => {
     .then((response) => response.json())
     .then((json) => {
       setData(json);
-      // setLoading(false);
     });
-    console.log("search data result",data)
+    console.log(data)
   }
 
   function handleChange(e) {
