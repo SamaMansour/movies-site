@@ -33,35 +33,27 @@ export const fetchSort = (
   sort_date_to,
   sort_date_from,
   sort_genre,
-  sort_choose
+  sort_rating,
+  
 ) =>
 BASE_API.get(
-    `movie/popular?api_key=${API_KEY}&release_date.lte=${sort_date_to}&release_date.gte=${sort_date_from}&with_genres=${sort_genre}&sort_by=${sort_choose}`
+    `movie/popular?api_key=${API_KEY}&release_date.lte=${sort_date_to}&release_date.gte=${sort_date_from}&with_genres=${sort_genre}&vote_average.gte=${sort_rating}`
   );
 
-  // export const fetchSortFilter = (
-  //   sort_date_to,
-  //   sort_date_from,
-  //   sort_genre,
-  //   sort_choose
-  // ) =>
-  // BASE_API.get(
-  //     `movie/popular?api_key=${API_KEY} &original_language=%22en%22&primary_release_date.gte=${sort_date_to}&primary_release_date.lte=${sort_date_from}&with_genres=${sort_genre}&sort_by=${sort_choose}`
-  //   );
+  
 
-  export const fetchSortFilterDiscover = (
-    sort_date_to,
-    sort_date_from,
-    sort_genre,
-    sort_choose
-  ) =>
-  BASE_API.get(
-      `discover/movie?api_key=${API_KEY}&original_language=en-US&primary_release_date.gte=${sort_date_to}&primary_release_date.lte=${sort_date_from}&with_genres=${sort_genre}&sort_by=${sort_choose}`
-    );
+export const fetchSortFilterDiscover = (
+  sort_date_to,
+  sort_date_from,
+  sort_genre
+) =>
+BASE_API.get(
+    `discover/movie?api_key=${API_KEY}&original_language=en-US&primary_release_date.gte=${sort_date_to}&primary_release_date.lte=${sort_date_from}&with_genres=${sort_genre}`
+  );
 
-    export const fetchSortFilter = (page, sortValue, startDate, endDate, genre) =>
+export const fetchSortFilter = (page, sortValue, startDate, endDate, genre) =>
 BASE_AXIOS.get(
-    `/discover/movie?api_key=${API_KEY}&page=${page}&sort_by=${sortValue}&release_date.lte=${startDate}&release_date.gte=${endDate}&with_genres=${genre}`
-  );
+  `/discover/movie?api_key=${API_KEY}&page=${page}&sort_by=${sortValue}&release_date.lte=${startDate}&release_date.gte=${endDate}&with_genres=${genre}`
+);
 export const fetchTopRatedPopular = (category, page) =>
 BASE_AXIOS.get(`/movie/${category}?api_key=${API_KEY}&page=${page}`);

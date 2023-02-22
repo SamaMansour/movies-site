@@ -5,23 +5,36 @@ import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
+  Box
+} from '@chakra-ui/react';
 import { fetchSort, fetchSortFilterDiscover,img_url} from '../../api';
 import MovieCard from '../MovieCard/MovieCard';
-import sliderSettings from '../Slider';
-import Slider from "react-slick";
-import Card from '../Card';
+import ItemCard from '../ItemCard';
 
 function FilterPage(props) {
     const [genre_id, setGenre_id] = useState([]);
-    const [sort, setSort] = useState("");
     const [dateTo, setDateTo] = useState("");
     const [dateFrom, setDateFrom] = useState("");
     const [data, setData] = useState(false);
     const filtered=[];
+    const [sliderValue, setSliderValue] = useState(0);
+    const [showTooltip, setShowTooltip] = useState(false);
+
+    const labelStyles = {
+      mt: '2',
+      ml: '-2.5',
+      fontSize: 'sm',
+    }
    
       const sortQueryDiscover = useQuery(
-        ["SortData", sort,dateTo,dateFrom,genre_id],
-        () => fetchSortFilterDiscover(dateTo,dateFrom,genre_id,sort),
+        ["SortData", dateTo,dateFrom,genre_id],
+        () => fetchSort(dateTo, dateFrom, genre_id, sliderValue),
         {
           retry: false,
         }
@@ -40,23 +53,44 @@ function FilterPage(props) {
 
   if(!data){return (<>
     <div className='col-sm-8'>
-      <select
-        className="form-select"
-        aria-label="Default select example"
-        onChange={(e) =>
-          setSort(e.target.options[e.target.selectedIndex].value)
-        }
-      >
-        <option hidden>Sort By</option>
-        <option value="original_title.asc">A to Z by The Title</option>
-        <option value="original_title.desc">Z to A by The Title</option>
-        <option value="popularity.asc">Increasing by Popularity</option>
-        <option value="popularity.desc">Decreasing by Popularity</option>
-        <option value="release_date.gte">Increasing by Release Date</option>
-        <option value="release_date.lte">Decreasing by Release Date</option>
-      </select>
       <div className=" d-flex flex-column">
         <h3 className="mt-3">Filter By</h3>
+        <Box pt={6} pb={2}>
+      <Slider id='slider'
+      defaultValue={5}
+      min={0}
+      max={10}
+      colorScheme='teal'
+      onChange={(v) => setSliderValue(v)}
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}>
+        <SliderMark value={0} {...labelStyles}>
+          0
+        </SliderMark>
+        <SliderMark value={5} {...labelStyles}>
+          5
+        </SliderMark>
+        <SliderMark value={10} {...labelStyles}>
+          10
+        </SliderMark>
+        <SliderMark
+          value={sliderValue}
+          textAlign='center'
+          bg='blue.500'
+          color='white'
+          mt='-10'
+          ml='-5'
+          w='12'
+        >
+          {sliderValue}%
+        </SliderMark>
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+    </Box>
+  
         <label htmlFor="text" className="mt-3">
           From:
         </label>
@@ -173,21 +207,7 @@ function FilterPage(props) {
   }
   if(data){
     return(<>
-    <select
-      className="form-select" style={{width:"100px"}}
-      aria-label="Default select example"
-      onChange={(e) =>
-        setSort(e.target.options[e.target.selectedIndex].value)
-      }
-    >
-      <option hidden>Sort By</option>
-      <option value="original_title.asc">A to Z by The Title</option>
-      <option value="original_title.desc">Z to A by The Title</option>
-      <option value="popularity.asc">Increasing by Popularity</option>
-      <option value="popularity.desc">Decreasing by Popularity</option>
-      <option value="release_date.gte">Increasing by Release Date</option>
-      <option value="release_date.lte">Decreasing by Release Date</option>
-    </select>
+   
     <div className=" d-flex flex-column">
       <h3 className="mt-3">Filter By</h3>
       <label htmlFor="text" className="mt-3">
@@ -308,22 +328,23 @@ function FilterPage(props) {
     >
       Reset
     </Button> */}
+    
     <h3>Results:</h3>
-    <Slider {...sliderSettings}>
+    
     {
       
       dataResults.map((item,index)=>(
         console.log(item),
         <div key={index} className="col-sm-4">
 
-        <Link to={`/detail/${item.id} `} style={{ color: 'black' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
+        <Link to={`/detail/${item.id} `} style={{ color: 'black' }}><ItemCard img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
        {console.log(img_url+item.poster_path)}
        
       </div>
        
       ))
     }
-   </Slider>
+  
 </>);
     
   }
