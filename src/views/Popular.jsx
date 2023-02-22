@@ -7,7 +7,7 @@ function Popular(props) {
 
   return (<>
     <h1>Popular</h1>
-    <div style={{width:"50%",height:"50%"}}>
+    <div style={{width:"100%",height:"100%"}}>
       <FilterPage />
     </div>
     </>

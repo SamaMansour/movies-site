@@ -13,42 +13,77 @@ import {
   SliderMark,
   Box
 } from '@chakra-ui/react';
-import { fetchSort, fetchSortFilterDiscover,img_url} from '../../api';
+import { fetchSort, fetchSortFilterDiscover,img_url, BASE_API, API_KEY } from '../../api';
 import MovieCard from '../MovieCard/MovieCard';
 import ItemCard from '../ItemCard';
 
 function FilterPage(props) {
-    const [genre_id, setGenre_id] = useState([]);
-    const [dateTo, setDateTo] = useState("");
-    const [dateFrom, setDateFrom] = useState("");
-    const [data, setData] = useState(false);
-    const filtered=[];
-    const [sliderValue, setSliderValue] = useState(0);
-    const [showTooltip, setShowTooltip] = useState(false);
+  const [genre_id, setGenre_id] = useState([]);
+  const [dateTo, setDateTo] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [data, setData] = useState(false);
+  const [page, setPage] = useState(1);
+  const filtered=[];
+  const [sliderValue, setSliderValue] = useState(0);
+  const [showTooltip, setShowTooltip] = useState(false);
 
-    const labelStyles = {
-      mt: '2',
-      ml: '-2.5',
-      fontSize: 'sm',
+  const labelStyles = {
+    mt: '2',
+    ml: '-2.5',
+    fontSize: 'sm',
+  }
+  
+  const sortQueryDiscover = useQuery(
+    ["SortData", dateTo,dateFrom,genre_id, sliderValue, page],
+    () => fetchSort(dateTo, dateFrom, genre_id, sliderValue, page),
+    {
+      retry: false,
     }
-   
-      const sortQueryDiscover = useQuery(
-        ["SortData", dateTo,dateFrom,genre_id],
-        () => fetchSort(dateTo, dateFrom, genre_id, sliderValue),
-        {
-          retry: false,
-        }
-      );
+  );
 
-    function handleSearch(){
-      setTimeout(()=>console.log("data=",sortQueryDiscover.data.data.results),
-      200)
-      console.log("query=",sortQueryDiscover)
-      setData(true);
+  function handleSearch(){
+    setTimeout(()=>console.log("data=",sortQueryDiscover.data.data.results),
+    200)
+    console.log("query=",sortQueryDiscover)
+    setData(true);
 
-    }
-    const dataResults=sortQueryDiscover?.data?.data?.results;
+  }
+  var dataResults=sortQueryDiscover?.data?.data?.results;
 
+  const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genre_id}`).then((response) => {
+    const movies = response.data.results;
+    const subData = [];
+    subData.push(...data);
+    subData.push(...movies);
+    setData(subData);
+  });
+
+  useEffect(() => {
+    fetchLoadMore(page);
+    console.log(page);
+    console.log(data);
+  }, [page]);
+
+  const LoadButton = styled.button`
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  margin-left:
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #ff5e57;
+  border: 0;
+  border-radius: 35px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  &:hover {
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);
+    transform: translate(0, -5px);
+  }
+`;
 
 
   if(!data){return (<>
@@ -56,41 +91,41 @@ function FilterPage(props) {
       <div className=" d-flex flex-column">
         <h3 className="mt-3">Filter By</h3>
         <Box pt={6} pb={2}>
-      <Slider id='slider'
-      defaultValue={5}
-      min={0}
-      max={10}
-      colorScheme='teal'
-      onChange={(v) => setSliderValue(v)}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}>
-        <SliderMark value={0} {...labelStyles}>
-          0
-        </SliderMark>
-        <SliderMark value={5} {...labelStyles}>
-          5
-        </SliderMark>
-        <SliderMark value={10} {...labelStyles}>
-          10
-        </SliderMark>
-        <SliderMark
-          value={sliderValue}
-          textAlign='center'
-          bg='blue.500'
-          color='white'
-          mt='-10'
-          ml='-5'
-          w='12'
-        >
-          {sliderValue}%
-        </SliderMark>
-        <SliderTrack>
-          <SliderFilledTrack />
-        </SliderTrack>
-        <SliderThumb />
-      </Slider>
-    </Box>
-  
+          <Slider id='slider'
+          defaultValue={5}
+          min={0}
+          max={10}
+          colorScheme='teal'
+          onChange={(v) => setSliderValue(v)}
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}>
+            <SliderMark value={0} {...labelStyles}>
+              0
+            </SliderMark>
+            <SliderMark value={5} {...labelStyles}>
+              5
+            </SliderMark>
+            <SliderMark value={10} {...labelStyles}>
+              10
+            </SliderMark>
+            <SliderMark
+              value={sliderValue}
+              textAlign='center'
+              bg='blue.500'
+              color='white'
+              mt='-10'
+              ml='-5'
+              w='12'
+            >
+              {sliderValue}%
+            </SliderMark>
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </Box>
+
         <label htmlFor="text" className="mt-3">
           From:
         </label>
@@ -331,7 +366,7 @@ function FilterPage(props) {
     
     <h3>Results:</h3>
     
-    {
+   <div className="container-fluid row "> {
       
       dataResults.map((item,index)=>(
         console.log(item),
@@ -341,11 +376,15 @@ function FilterPage(props) {
        {console.log(img_url+item.poster_path)}
        
       </div>
+    
        
       ))
     }
+      </div>
+      <LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
+
   
-</>);
+  </>);
     
   }
 }
