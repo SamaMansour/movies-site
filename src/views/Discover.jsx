@@ -23,7 +23,7 @@ function Discover(props) {
   console.log("data",data.results);
   return (
     <>
-      
+      <h2>Discover</h2>
       <div className="container-fluid row ">
         {/* <Slider {...sliderSettings}> */}
       {
