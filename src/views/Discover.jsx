@@ -9,6 +9,25 @@ import sliderSettings from '../components/Slider';
 
 function Discover(props) {
   const [data, setData] = useState([]);
+  const [wishItem, setWishItem] = useState("");
+  const [wishList, setWishList] = useState([]);
+
+
+  const handleWishAdd = (id, item) => {
+    const newItem = { id: id,  item: item};
+    setWishList((wishList) => wishList.concat(newItem));
+    
+    console.log(wishList);
+  };
+
+  useEffect(() => {
+    if (wishList.length > 0) {
+      localStorage.setItem("wishlist", JSON.stringify(wishList));
+    }
+  }, [wishList]);
+
+  
+
   
 
   useEffect(() => {
@@ -31,7 +50,7 @@ function Discover(props) {
         data?.results?.map((item,index)=>(
           console.log(item),
           <div key={index} className="col-sm-4 mb-2">
-            <MovieCard/>
+            <button onClick={() => {handleWishAdd(item.id, item)}}>Add to Fav</button>
           <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} overview={item.overview} id={item.id}/></Link>
          {console.log(img_url+item.poster_path)}
          

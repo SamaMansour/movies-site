@@ -1,33 +1,37 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input
-} from '@chakra-ui/react'
+const SearchContainer=styled.div`  
+display: flex;
+justify-content: center;
+margin-bottom: 24px;`
+
+const SearchContainerInput=styled.input`
+height: 32px;
+width: 300px;
+padding: 0px 12px 0px 12px;
+`
 
 const SearchInput = ({ value, onChangeText ,onFormSubmit}) => {
-  useEffect(()=>{
-    let input = document.getElementById('search');
+  React.useEffect(() => {
+    let input = document.querySelector('input');
     input.addEventListener('input', onChangeText);
     return input.removeEventListener('input', onChangeText);
-  },[])
-
+  }, []);
 
   return (
-    <form>
-      <FormControl>
-        <Input type='text'
-        id='search' 
-        placeholder='Search movie by name'
+    <SearchContainer>
+      <form onSubmit={onFormSubmit}>
+      <SearchContainerInput
+        type="text"
         value={value}
-        onChange= {onChangeText}/>
-      </FormControl>
-    </form>
-  )
-}
+        onChange={onChangeText}
+        placeholder="Search movie by name"
+      />
+      </form>
+      </SearchContainer>
+  );
+};
 
-export default SearchInput
+export default SearchInput;
+

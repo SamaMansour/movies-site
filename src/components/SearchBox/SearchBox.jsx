@@ -1,6 +1,6 @@
 import React from 'react';
  import { fetchResults } from './index';
-import MovieItem from './MovieItem';
+import ListItem from './ListItem';
 import SearchInput from './SearchInput';
 import debounce from 'lodash.debounce';
 
@@ -37,7 +37,7 @@ export default function SearchBox() {
       {console.log(results),
       results?.results?.map((result, index) => (
         <div key={index}>
-          <MovieItem
+          <ListItem
             title={result.title}
             imageUrl={`${img_url}${result.poster_path}`}
             caption={result.release_date}

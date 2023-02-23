@@ -1,4 +1,4 @@
-const fetchResults = async (query) => {
+export const fetchResults = async (query) => {
   if (query.length > 0){
     const decodedQuery = query.replace(' ', '+');
     const API_KEY = "d3fea0d49f7035466ab4c90405575aa0";

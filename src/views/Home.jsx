@@ -25,6 +25,7 @@ const Home = (props) => {
     <>
     <SearchBox/>
     <Discover/>
+    <div className="b-example-divider my-5"></div>
     </>
   );
 }
