@@ -14,7 +14,6 @@ import {
   Box
 } from '@chakra-ui/react';
 import { fetchSort, fetchSortFilterDiscover,img_url, BASE_API, API_KEY } from '../../api';
-import MovieCard from '../MovieCard/MovieCard';
 import ItemCard from '../ItemCard';
 
 function FilterPage(props) {
