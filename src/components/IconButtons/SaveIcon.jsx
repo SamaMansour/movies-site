@@ -1,10 +1,7 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons/faEllipsisV';
-import { faInfo } from '@fortawesome/free-solid-svg-icons/faInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
