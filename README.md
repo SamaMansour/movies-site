@@ -18,7 +18,7 @@ In the project directory, you can run:
 2. Storybook
 3. Bootstrap
 4. Redux
-5.Redux persist
+5. Redux persist
 
 
 
