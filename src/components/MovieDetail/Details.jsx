@@ -4,18 +4,11 @@ import { useQuery } from 'react-query';
 import { fetchSingleMovie } from '../../api';
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Button } from '@chakra-ui/react';
 
-
-
-
-
 const Details = (props) => {
     const { movieId } = useParams();
     const [data, setData] = useState([]);
-
-
     const movieQuery = useQuery(["movie", movieId], () => fetchSingleMovie(movieId), { retry: false, select: state => state?.data })
     console.log("movieQuery:::", movieQuery);
-
     const movieData = movieQuery?.data;
 		console.log(movieData?.vote_average);
 

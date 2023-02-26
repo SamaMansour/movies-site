@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SearchBox from '../components/SearchBox/SearchBox';
 import Discover from './Discover';
 
+
 const Home = (props) => {
   const [query, setQuery] = useState("");
   const [data,setData]=useState();
@@ -25,7 +26,9 @@ const Home = (props) => {
     <>
     <SearchBox/>
     <Discover/>
-    <div className="b-example-divider my-5"></div>
+    <div className="b-example-divider my-5">
+     
+    </div>
     </>
   );
 }

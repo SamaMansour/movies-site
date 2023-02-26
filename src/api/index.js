@@ -32,11 +32,11 @@ export const fetchSort = (
   sort_date_from,
   sort_genre,
   sort_rating,
-  page
+  sort_page
   
 ) =>
 BASE_API.get(
-    `movie/popular?api_key=${API_KEY}&page=${page}&release_date.lte=${sort_date_to}&release_date.gte=${sort_date_from}&with_genres=${sort_genre}&vote_average.gte=${sort_rating}`
+    `movie/popular?api_key=${API_KEY}&page=${sort_page}&release_date.lte=${sort_date_to}&release_date.gte=${sort_date_from}&with_genres=${sort_genre}&vote_average.gte=${sort_rating}`
   );
 
   
