@@ -8,9 +8,6 @@ export const Popular_URL =
 export const Discover_URL =
   'https://api.themoviedb.org/3/discover/movie?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate';
 
-  
-
-//export const detail_url= `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=14ccdb96456935bbb41591e99697d262&language=en-US`
 export const img_url="http://image.tmdb.org/t/p/w500";
 export const fetchSingleMovie = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
 
@@ -38,9 +35,6 @@ export const fetchSort = (
 BASE_API.get(
     `movie/popular?api_key=${API_KEY}&page=${sort_page}&release_date.lte=${sort_date_to}&release_date.gte=${sort_date_from}&with_genres=${sort_genre}&vote_average.gte=${sort_rating}`
   );
-
-  
-
 export const fetchSortFilterDiscover = (
   sort_date_to,
   sort_date_from,

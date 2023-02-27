@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchBox from '../components/SearchBox/SearchBox';
 import Discover from './Discover';
+import Trending from './Trending';
 
 
 const Home = (props) => {
@@ -27,7 +28,7 @@ const Home = (props) => {
     <SearchBox/>
     <Discover/>
     <div className="b-example-divider my-5">
-     
+     <Trending/>
     </div>
     </>
   );
