@@ -12,7 +12,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-## Technoligies used in this project
+## Technologies used in this project
 
 1. Chakra-ui
 2. Storybook
