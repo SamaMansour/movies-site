@@ -20,6 +20,13 @@ const Details = (props) => {
 								direction={{ base: 'column', sm: 'row' }}
 								overflow='hidden'
 								variant='outline'
+								bgImage={`https://image.tmdb.org/t/p/w500` + movieData?.poster_path}
+								bgPosition= "top"
+								bgRepeat={"no-repeat"}
+								bgSize="cover"
+								backdropFilter='auto'
+								backdropBlur='80px'
+								height='500px'
 						>
 						<Image
 								objectFit='cover'

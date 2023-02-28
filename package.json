@@ -22,6 +22,7 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-heart": "^1.0.6",
     "react-persist": "^1.0.2",
@@ -73,12 +74,14 @@
     ]
   },
   "devDependencies": {
+    "@mdx-js/react": "^2.3.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
     "@storybook/builder-webpack5": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/mdx2-csf": "^0.0.3",
     "@storybook/node-logger": "^6.5.16",
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.16",

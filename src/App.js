@@ -27,7 +27,6 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/detail/:movieId' element={<Details/>}/>
           <Route path='/popular' element={<Popular/>}/>
-
         </Routes>
       </BrowserRouter>
    </>
