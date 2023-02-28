@@ -56,7 +56,7 @@ const Details = (props) => {
 										{movieData?.runtime}
 									</Text>
 									<div style={{ width: 100, height: 100, marginTop: 50, marginLeft: -150 }}>
-									<CircularProgressbar width='50%' value={percentage} text={`${percentage}%`} />;
+										<CircularProgressbar width='50%' value={percentage} text={`${percentage}%`} />;
 									</div>
 								</CardFooter>
 						</Stack>
