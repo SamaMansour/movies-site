@@ -20,5 +20,9 @@ In the project directory, you can run:
 4. Redux
 5. Redux persist
 
+## To add your api key 
+
+### Add your api key to .env file
+
 
 
