@@ -24,5 +24,7 @@ In the project directory, you can run:
 
 ### Add your api key to .env file
 
+### `API_KEY = YOUR_API_KEY`
+
 
 
