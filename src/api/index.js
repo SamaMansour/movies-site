@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const BASE_API = axios.create({ baseURL: "https://api.themoviedb.org/3/" });
 const BASE_AXIOS = axios.create({baseURL: "https://api.themoviedb.org/3%22%7D"});
-export const API_KEY="14ccdb96456935bbb41591e99697d262";
+export const API_KEY= process.env.API_KEY;
 export const Popular_URL =
   'https://api.themoviedb.org/3/movie/popular?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&page=1';
 export const Discover_URL =

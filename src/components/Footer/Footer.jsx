@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const Footer = () => {
   return (
     <>
@@ -8,8 +9,6 @@ const Footer = () => {
         <div class="col-xl-3 col-lg-4 col-md-6">
           <div>
             <h3>Logo</h3>
-            <p class="mb-30 footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad soluta facilis
-              eos quia optio iusto odit atque eum tempore, quisquam officiis vero veniam hic,</p>
           </div>
         </div>
         <div class="col-xl-2 offset-xl-1 col-lg-2 col-md-6">
