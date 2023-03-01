@@ -1,5 +1,4 @@
 import React, { useEffect,useState } from 'react';
-//import FilterPage from './SortFilter/FilterPage';
 import {API_KEY, BASE_API, fetchTopRatedMovies,img_url} from "../api";
 import Card from '../components/ItemCard';
 import Slider from "react-slick";
@@ -14,17 +13,7 @@ function TopRated(props) {
   const [data,setData]=useState([]);
   const [genreId,setGenreId]=useState();
 
-  // useEffect(()=>{
-  //   fetchTopRatedMovies(page).then((response)=>{
-  //   const movies = response.data.results;
-  //   const subData = [];
-  //   subData.push(...data);
-  //   subData.push(...movies);
-  //   setData(subData);
-  //   console.log(response)
-  //   });
-  // },[]);
- 
+  
   const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`).then((response) => {
     const movies = response.data.results;
     const subData = [];
@@ -97,13 +86,4 @@ export default TopRated;
   }
 `;
 
-// const MovieCard=styled(Card)`
-// background-color:#ecf0f1;
-// width:11rem;
-// cursor: pointer;
-// &:hover {
-// transform: scale(1.00);
-// transition: all 600ms;
-// z-index: 99;
-// }
-// `
+

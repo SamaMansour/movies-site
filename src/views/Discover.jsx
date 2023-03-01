@@ -43,7 +43,7 @@ function Discover(props) {
     <>
       <h2>Discover</h2>
       <div>
-      <div className="container-fluid row ">
+      <div >
         <SlideshowWithPagination
           showNumbers={true}
           showDots={true}
@@ -53,17 +53,12 @@ function Discover(props) {
             data?.results?.map((item,index)=>(
               console.log(item),
               <div key={index} className="col-sm-4 mb-2">
-               
                 <button onClick={()=>{ addToWishList(item.id)}}>
                 <ButtonCard/> 
                 </button>
-                <button onClick={()=>{ addToWishList(item.id)}}>
-                <BookmarkCard/> 
-                </button>
-                
                 <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><ItemCard img={`${img_url}${item.poster_path}`} title={item.title} overview={item.overview} id={item.id}/></Link>
                 {console.log(img_url+item.poster_path)}
-            </div>
+              </div>
           
             ))
           }

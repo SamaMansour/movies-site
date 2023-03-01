@@ -6,8 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Details from './components/MovieDetail/Details';
-import Popular from'./views/Popular'
-
+import Popular from'./views/Popular';
 
 function App() {
   return (

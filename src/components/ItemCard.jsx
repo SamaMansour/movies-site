@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ItemCard = ({img, overview,title,id}) => {
   return (
     <div>
-      <Card maxW='sm'>
+      <Card maxW='xs'>
         <CardBody>
           <Image
             src={img}

@@ -3,6 +3,7 @@ import SearchBox from '../components/SearchBox/SearchBox';
 import Discover from './Discover';
 import Trending from './Trending';
 import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 
 
 const Home = (props) => {
@@ -26,7 +27,7 @@ const Home = (props) => {
   }
   return (
     <>
-    <SearchBox/>
+    <Header/>
     <Discover/>
     <div className="b-example-divider my-5">
      <Trending/>

@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Input } from '@chakra-ui/react'
 
 const SearchContainer=styled.div`  
 display: flex;
 justify-content: center;
-margin-bottom: 24px;`
+margin-bottom: 24px;
+width:100%;
+`;
 
-const SearchContainerInput=styled.input`
-height: 32px;
-width: 300px;
-padding: 0px 12px 0px 12px;
-`
+
 
 const SearchInput = ({ value, onChangeText ,onFormSubmit}) => {
   React.useEffect(() => {
@@ -22,7 +21,7 @@ const SearchInput = ({ value, onChangeText ,onFormSubmit}) => {
   return (
     <SearchContainer>
       <form onSubmit={onFormSubmit}>
-      <SearchContainerInput
+      <Input
         type="text"
         value={value}
         onChange={onChangeText}
