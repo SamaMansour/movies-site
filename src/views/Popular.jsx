@@ -1,70 +1,66 @@
 import React, { useEffect,useState } from 'react';
-import {API_KEY, BASE_API, fetchTopRatedMovies,img_url} from "../api";
+import {API_KEY, BASE_API, fetchTopRatedMovies,img_url} from '../api';
 import Card from '../components/ItemCard';
-import Slider from "react-slick";
-import {Link} from "react-router-dom";
+import Slider from 'react-slick';
+import {Link} from 'react-router-dom';
 import ButtonCard from '../components/IconButtons/ButtonCard';
-import FilterPage from '../components/FilterPage/FilterPage'
+import FilterPage from '../components/FilterPage/FilterPage';
 import { Button } from '@mui/material';
 import styled from 'styled-components';
 
 function TopRated(props) {
-  const [page, setPage] = useState(1);
-  const [data,setData]=useState([]);
-  const [genreId,setGenreId]=useState();
+	const [page, setPage] = useState(1);
+	const [data,setData]=useState([]);
+	const [genreId,setGenreId]=useState();
 
-  
-  const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`).then((response) => {
-    const movies = response.data.results;
-    const subData = [];
-    subData.push(...data);
-    subData.push(...movies);
-    setData(subData);
-  });
+	const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`).then((response) => {
+		const movies = response.data.results;
+		const subData = [];
+		subData.push(...data);
+		subData.push(...movies);
+		setData(subData);
+	});
 
-  useEffect(() => {
-    fetchLoadMore(page);
-    console.log(page);
-    console.log(data);
-  }, [page]);
+	useEffect(() => {
+		fetchLoadMore(page);
+		console.log(page);
+		console.log(data);
+	}, [page]);
 
-  
-
-  return (<>
-  <h1 className='offset-1'>Top Rated Movies</h1>
-  <div className="container-fluid row ">
-  <div className="col-sm-4"><FilterPage/></div>
-    <div className='col-sm-8'>
-      {/* <Slider {...topratedSliderSettings}> */}
-      <div className="container d-flex flex-wrap allign-item-space-between">
-      {
-        
-        data?.map((item,index)=>(
-          console.log(item),
-          <div style={{justifyContent:"space-around"}} >
-          <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}>
-            <Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id} style={{width:"13rem",marginRight:"2%"}}/>
-          </Link>
-         {console.log(img_url+item.poster_path)}
+	return (<>
+		<h1 className='offset-1'>Top Rated Movies</h1>
+		<div className="container-fluid row ">
+			<div className="col-sm-4"><FilterPage/></div>
+			<div className='col-sm-8'>
+				{/* <Slider {...topratedSliderSettings}> */}
+				<div className="container d-flex flex-wrap allign-item-space-between">
+					{
+						data?.map((item,index)=>(
+							console.log(item),
+							<div style={{justifyContent:'space-around'}} >
+								<Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}>
+									<Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id} style={{width:'13rem',marginRight:'2%'}}/>
+								</Link>
+								{console.log(img_url+item.poster_path)}
          
-        </div>
+							</div>
          
-        ))
-      }
-      </div>
-      <LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
-     {/* </Slider> */}
-     </div>
+						))
+					}
+				</div>
+				<LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
+				{/* </Slider> */}
+			</div>
      
-    </div>
+		</div>
       
-  {/* <SortFilter/> */}
-  </>);
+		{/* <SortFilter/> */}
+	</>);
 }
 
 export default TopRated;
 
- const LoadButton = styled.button`
+const LoadButton = styled.button`
   display: block;
   width: 100%;
   padding: 12px 0;

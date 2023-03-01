@@ -10,9 +10,9 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function FavFilled({id}) {
 
-  return (
-    <div>
-      <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite/>} />
-    </div>
-  );
+	return (
+		<div>
+			<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite/>} />
+		</div>
+	);
 }

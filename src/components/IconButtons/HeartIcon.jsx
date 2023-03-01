@@ -9,38 +9,38 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const FontAwesomeSvgIcon = React.forwardRef((props, ref) => {
-  const { icon } = props;
+	const { icon } = props;
 
-  const {
-    icon: [width, height, , , svgPathData],
-  } = icon;
+	const {
+		icon: [width, height, , , svgPathData],
+	} = icon;
 
-  return <SvgIcon ref={ref} viewBox={` 25 25 ${width} ${height}`}></SvgIcon>;
+	return <SvgIcon ref={ref} viewBox={` 25 25 ${width} ${height}`}></SvgIcon>;
 });
 function handleClick() {
-  console.log('clicked');
+	console.log('clicked');
 }
 
 export default function HeartIcon() {
-  return (
-    <div>
-      <Box
-        sx={{
-          '& > :not(style)': {
-            m: 1,
-          },
-        }}
-      >
-        <IconButton aria-label="Example" onClick={handleClick}>
-          <FontAwesomeIcon icon={faEllipsisV} />
-        </IconButton>
-        <IconButton aria-label="Example">
-          <BookmarkIcon/>
-        </IconButton>
-        <IconButton aria-label="Example">
-          <FavoriteIcon/>
-        </IconButton>
-      </Box>
-    </div>
-  );
+	return (
+		<div>
+			<Box
+				sx={{
+					'& > :not(style)': {
+						m: 1,
+					},
+				}}
+			>
+				<IconButton aria-label="Example" onClick={handleClick}>
+					<FontAwesomeIcon icon={faEllipsisV} />
+				</IconButton>
+				<IconButton aria-label="Example">
+					<BookmarkIcon/>
+				</IconButton>
+				<IconButton aria-label="Example">
+					<FavoriteIcon/>
+				</IconButton>
+			</Box>
+		</div>
+	);
 }
