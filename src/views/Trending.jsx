@@ -3,6 +3,7 @@ import Card from '../components/ItemCard';
 import { Button, ButtonGroup, Box } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
 import {Link} from "react-router-dom";
+import SlideshowWithPagination from "react-slideshow-with-pagination";
 
 
 
@@ -54,7 +55,16 @@ function Trending(props) {
       </h1>
       </div>
       <div className="container-fluid row">
-     
+      <SlideshowWithPagination
+          showNumbers={true}
+          showDots={true}
+          showArrows={true}
+          numberOfCardsPerScreen={1}
+          showOneCardForWidthLower="sm"
+          slideshowContainerMaxWidth={false}
+          cardWidth={500}
+          cardHeight={300}
+        >
         { 
           data?.results?.map((item, index) => (
             //console.log("dayItem", item),
@@ -66,6 +76,7 @@ function Trending(props) {
             </div>
           ))
         }
+        </SlideshowWithPagination>
       
       </div>
     </>

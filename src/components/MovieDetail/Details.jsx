@@ -13,7 +13,7 @@ const Details = (props) => {
     console.log("movieQuery:::", movieQuery);
     const movieData = movieQuery?.data;
 		console.log(movieData?.vote_average);
-		const percentage = movieData?.vote_average
+		const percentage = Math.ceil(movieData?.vote_average*10);
 
 
     return (

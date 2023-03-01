@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function ButtonCard({id}) {
   return (
     <>
-      <div className="card" style={{ width: '24rem' ,backgroundColor:"#ecf0f1"}}>
+      <div className="card" style={{ width: '5rem' ,backgroundColor:"#ecf0f1", borderRadius: '50%'}}>
         <FavFilled id={id} />
       </div>
     </>
