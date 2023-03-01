@@ -4,12 +4,13 @@ import { Button, ButtonGroup, Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
+import { API_KEY } from '../api';
 
 function Trending(props) {
 	const [timeData,setTimeData]=useState('day');
 	const [data,setData]=useState([]);
 
-	const trending_url=`https://api.themoviedb.org/3/trending/movie/${timeData}?api_key=14ccdb96456935bbb41591e99697d262`;
+	const trending_url=`https://api.themoviedb.org/3/trending/movie/${timeData}?api_key=${API_KEY}`;
 	useEffect(() => {
 		fetch(trending_url)
 			.then((response) => response.json())
