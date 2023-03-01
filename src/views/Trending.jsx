@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
 
-
-
-
 function Trending(props) {
 	const [timeData,setTimeData]=useState('day');
 	const [data,setData]=useState([]);
@@ -85,12 +82,3 @@ export default Trending;
 
 
 
-// function handleDayButton() {
-//   setButtonData(true);
-//   return <DayTrending/>
-// }
-
-// function handleWeekButton() {
-//   setButtonData(false);
-//   return <WeekTrending/>
-// }
