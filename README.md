@@ -22,7 +22,7 @@ In the project directory, you can run:
 
 ## To add your api key 
 
-### Add your api key to .env file
+### Add your api key to .env file to your root folder
 
 ### `REACT_APP_API_KEY = YOUR_API_KEY`
 
