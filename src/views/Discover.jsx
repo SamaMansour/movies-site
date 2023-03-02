@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import ButtonCard from '../components/IconButtons/ButtonCard';
 import BookmarkCard from '../components/IconButtons/BookmarkCard';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
+import Slider from "@ant-design/react-slick";
+import sliderSettings from "../components/Slider"
 
 function Discover(props) {
 	const [data, setData] = useState([]);
@@ -44,11 +46,7 @@ function Discover(props) {
 			<h2>Discover</h2>
 			<div>
 				<div >
-					<SlideshowWithPagination
-						showNumbers={true}
-						showDots={true}
-						showArrows={true}
-					>
+					<Slider {...sliderSettings}>
 						{   
 							data?.results?.map((item,index)=>(
 								console.log(item),
@@ -62,22 +60,12 @@ function Discover(props) {
           
 							))
 						}
-					</SlideshowWithPagination>
+					</Slider>
 				</div>
      
 				<div className="b-example-divider my-5">
-					<div className="container-fluid row ">
-						<SlideshowWithPagination
-							showNumbers={true}
-							showDots={true}
-							showArrows={true}
-							numberOfCardsPerScreen={1}
-							showOneCardForWidthLower="sm"
-							slideshowContainerMaxWidth={false}
-							cardWidth={500}
-							cardHeight={300}
-							autopaly={false}
-						>
+					<div>
+            <Slider {...sliderSettings}>
 							<h2>WishList</h2>
 							<div> 
 								{ subData.map((item, index)=>(
@@ -87,7 +75,7 @@ function Discover(props) {
 										{console.log(img_url+item.poster_path)}
 									</div>))}
 							</div>
-						</SlideshowWithPagination>
+						</Slider>
 					</div>
 				</div>
 			</div>

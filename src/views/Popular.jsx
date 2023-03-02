@@ -7,6 +7,7 @@ import ButtonCard from '../components/IconButtons/ButtonCard';
 import FilterPage from '../components/FilterPage/FilterPage';
 import { Button } from '@mui/material';
 import styled from 'styled-components';
+import Footer from '../components/Footer/Footer';
 
 function TopRated(props) {
 	const [page, setPage] = useState(1);
@@ -53,8 +54,6 @@ function TopRated(props) {
 			</div>
      
 		</div>
-      
-		{/* <SortFilter/> */}
 	</>);
 }
 

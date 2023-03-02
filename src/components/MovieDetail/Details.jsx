@@ -5,12 +5,15 @@ import { fetchSingleMovie } from '../../api';
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Button } from '@chakra-ui/react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Cast from '../Cast/Cast';
 
 const Details = (props) => {
 	const { movieId } = useParams();
 	const [data, setData] = useState([]);
 	const movieQuery = useQuery(['movie', movieId], () => fetchSingleMovie(movieId), { retry: false, select: state => state?.data });
 	console.log('movieQuery:::', movieQuery);
+	const movieCreditsQuery = useQuery(['moviecredits', movieId], () => fetchSingleMovieCredits(movieId), { retry: false, select: state => state?.data });
+	console.log('movieCast:::', movieCreditsQuery);
 	const movieData = movieQuery?.data;
 	console.log(movieData?.vote_average);
 	const percentage = Math.ceil(movieData?.vote_average*10);
@@ -61,6 +64,7 @@ const Details = (props) => {
 						</CardFooter>
 					</Stack>
 				</Card>
+				<Cast/>
 			</div>
 		</>
 	);
