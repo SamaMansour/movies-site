@@ -42,7 +42,7 @@ const Details = (props) => {
 					/>
 
 					<Stack>
-						<CardBody>
+						<CardBody color='white' opacity='50%'>
 							<Heading size='md'> {movieData?.title} </Heading>
 
 							<Text py='2'>
