@@ -13,6 +13,12 @@ function Discover(props) {
 	const [data, setData] = useState([]);
 	const [subData, setSubData] = useState([]);
 	let wishList = [];
+  const settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   
 	useEffect(() => {
 		const URL =Discover_URL ;
@@ -64,10 +70,9 @@ function Discover(props) {
 				</div>
      
 				<div className="b-example-divider my-5">
-					<div>
-            <Slider {...sliderSettings}>
+					
 							<h2>WishList</h2>
-							<div> 
+							<div className="container-fluid row "> 
 								{ subData.map((item, index)=>(
 									console.log(['id']),
 									<div key={index} className="col-sm-4 mb-2">
@@ -75,8 +80,6 @@ function Discover(props) {
 										{console.log(img_url+item.poster_path)}
 									</div>))}
 							</div>
-						</Slider>
-					</div>
 				</div>
 			</div>
 		</>
