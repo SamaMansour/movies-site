@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
 import { API_KEY } from '../api';
+import sliderSettings from '../components/Slider';
+import Slider from '@ant-design/react-slick';
 
 function Trending(props) {
 	const [timeData,setTimeData]=useState('day');
@@ -51,16 +53,7 @@ function Trending(props) {
 			</h1>
 		</div>
 		<div className="container-fluid row">
-			<SlideshowWithPagination
-				showNumbers={true}
-				showDots={true}
-				showArrows={true}
-				numberOfCardsPerScreen={1}
-				showOneCardForWidthLower="sm"
-				slideshowContainerMaxWidth={false}
-				cardWidth={500}
-				cardHeight={300}
-			>
+			<Slider {...sliderSettings}>
 				{ 
 					data?.results?.map((item, index) => (
 						//console.log("dayItem", item),
@@ -72,7 +65,7 @@ function Trending(props) {
 						</div>
 					))
 				}
-			</SlideshowWithPagination>
+			</Slider>
       
 		</div>
 		</>

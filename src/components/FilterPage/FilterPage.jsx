@@ -381,7 +381,7 @@ function FilterPage(props) {
     
 			<h3>Results:</h3>
     
-			<div className="container-fluid row "> {
+			<div className="container d-flex flex-wrap allign-item-space-between"> {
       
 				dataResults.map((item,index)=>(
 					console.log(item),
@@ -396,8 +396,10 @@ function FilterPage(props) {
 				))
 			}
 			</div>
-			<LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
-
+			{ data.length > 0 ?
+				<LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
+				:<div></div>
+			}	
   
 		</>);
     

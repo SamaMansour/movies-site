@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/react-slick": "^1.0.0",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -26,6 +27,7 @@
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-heart": "^1.0.6",
+    "react-multi-carousel": "^2.8.2",
     "react-persist": "^1.0.2",
     "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
@@ -36,6 +38,7 @@
     "react-slideshow-with-pagination": "^1.0.2",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },

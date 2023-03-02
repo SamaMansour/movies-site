@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/images/movie-logo.jpeg';
 
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
 					<div className="row">
 						<div className="col-xl-3 col-lg-4 col-md-6">
 							<div>
-								<h3>Logo</h3>
+								<img src = {logo} alt= "logo"/>
 							</div>
 						</div>
 						<div className="col-xl-2 offset-xl-1 col-lg-2 col-md-6">
