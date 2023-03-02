@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import { fetchSingleMovie, fetchSingleMovieCredits } from '../../api';
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Button } from '@chakra-ui/react';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
-import Slider from "@ant-design/react-slick";
+import Slider from '@ant-design/react-slick';
 import castSlider from './CastSlider';
 
 const Cast = () => {
@@ -73,19 +73,19 @@ const Cast = () => {
     
 			<h2 className="my-2">Film Cast:</h2>
 			<div className="container d-flex flex-row justify-content-center row mb-2" style={{ backgroundColor: '#ecf0f1ey' }}>
-        <Slider {...castSlider}>
-          {
-            movieCastData?.map(item =>
-              <Cast key={item.id}>
-                <img className="rounded" key={item} width={'100'} height={'150'} src={item.profile_path === null ? 'https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png' : ` https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
-                <CastDescription>
-                  <h6  style={{ color: '#2c3e50' }}><strong>{item.name}</strong></h6>
-                  <h6  style={{ color: '#2c3e50' }}>Role:{item.character}</h6>
-                </CastDescription>
-              </Cast>
-            )
-          }
-        </Slider>
+				<Slider {...castSlider}>
+					{
+						movieCastData?.map(item =>
+							<Cast key={item.id}>
+								<img className="rounded" key={item} width={'100'} height={'150'} src={item.profile_path === null ? 'https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png' : ` https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
+								<CastDescription>
+									<h6  style={{ color: '#2c3e50' }}><strong>{item.name}</strong></h6>
+									<h6  style={{ color: '#2c3e50' }}>Role:{item.character}</h6>
+								</CastDescription>
+							</Cast>
+						)
+					}
+				</Slider>
 			          
 			</div>
 			

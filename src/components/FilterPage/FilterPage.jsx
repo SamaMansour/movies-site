@@ -397,8 +397,8 @@ function FilterPage(props) {
 			}
 			</div>
 			{ data.length > 0 ?
-			<LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
-			:<div></div>
+				<LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
+				:<div></div>
 			}	
   
 		</>);

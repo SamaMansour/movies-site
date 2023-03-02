@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
 import { API_KEY } from '../api';
-import sliderSettings from "../components/Slider"
-import Slider from "@ant-design/react-slick";
+import sliderSettings from '../components/Slider';
+import Slider from '@ant-design/react-slick';
 
 function Trending(props) {
 	const [timeData,setTimeData]=useState('day');
