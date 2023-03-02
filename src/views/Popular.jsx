@@ -31,28 +31,8 @@ function TopRated(props) {
 	return (<>
 		<h1 className='offset-1'>Top Rated Movies</h1>
 		<div className="container-fluid row ">
-			<div className="col-sm-4"><FilterPage/></div>
-			<div className='col-sm-8'>
-				{/* <Slider {...topratedSliderSettings}> */}
-				<div className="container d-flex flex-wrap allign-item-space-between">
-					{
-						data?.map((item,index)=>(
-							console.log(item),
-							<div style={{justifyContent:'space-around'}} >
-								<Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}>
-									<Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id} style={{width:'13rem',marginRight:'2%'}}/>
-								</Link>
-								{console.log(img_url+item.poster_path)}
-         
-							</div>
-         
-						))
-					}
-				</div>
-				<LoadButton className='allign-item-center' onClick={()=>setPage(page+1)}>Load More</LoadButton>
-				{/* </Slider> */}
-			</div>
-     
+			<FilterPage/>
+			
 		</div>
 	</>);
 }
