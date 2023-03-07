@@ -7,14 +7,19 @@ import { ChakraProvider } from '@chakra-ui/react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { Provider } from 'react-redux';
+import store from './store/index';
 
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+	
 	<QueryClientProvider client={queryClient}>
 		<ChakraProvider>
-			<App />
+			<Provider store={store}>
+				<App />
+			</Provider>
 		</ChakraProvider>
 	</QueryClientProvider>
   

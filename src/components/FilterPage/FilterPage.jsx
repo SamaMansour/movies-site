@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { fetchSort, fetchSortFilterDiscover,img_url, BASE_API, API_KEY } from '../../api';
 import ItemCard from '../ItemCard';
-
+import { applyFilters } from "../../store/actions/filterActions";
 function FilterPage(props) {
 	const [genre_id, setGenre_id] = useState([]);
 	const [dateTo, setDateTo] = useState('');
@@ -31,10 +31,12 @@ function FilterPage(props) {
 		ml: '-2.5',
 		fontSize: 'sm',
 	};
+
+	const dispatch = useDispatch();
   
 	const sortQueryDiscover = useQuery(
 		['SortData', dateTo,dateFrom,genre_id, sliderValue, page],
-		() => fetchSort(dateTo, dateFrom, genre_id, sliderValue, page),
+		() => dispatch(applyFilters(dateTo, dateFrom, genre_id, sliderValue, page)),
 		{
 			retry: false,
 		}

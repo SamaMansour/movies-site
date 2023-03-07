@@ -5,6 +5,7 @@ import SearchInput from './SearchInput';
 import debounce from 'lodash.debounce';
 
 
+
 const fetchData = async (query, cb) => {
 	console.warn('fetching ' + query);
 	const res = await fetchResults(query);
