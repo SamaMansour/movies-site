@@ -8,6 +8,8 @@ import BookmarkCard from '../components/IconButtons/BookmarkCard';
 import SlideshowWithPagination from 'react-slideshow-with-pagination';
 import Slider from '@ant-design/react-slick';
 import sliderSettings from '../components/Slider';
+import { useDispatch } from 'react-redux';
+import { addFavourite } from '../store/actions/favouriteActions';
 
 function Discover(props) {
 	const [data, setData] = useState([]);
@@ -31,8 +33,10 @@ function Discover(props) {
   
 	console.log('data',data.results);
 	var wishListData;
-	const addToWishList = (id)=>{
-		wishListData = data.results.find(item => item.id === id);
+	const dispatch = useDispatch();
+	const addToWishList = async (id)=>{
+		wishListData = await dispatch(addFavourite(id));
+		console.log(wishListData);
 		wishList.push(wishListData);
 		setSubData((wishList)=>wishList.concat(wishListData));
 		console.log(subData);

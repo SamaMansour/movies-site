@@ -1,5 +1,4 @@
 import React from 'react';
-import { fetchResults } from './index';
 import ListItem from './ListItem';
 import SearchInput from './SearchInput';
 import debounce from 'lodash.debounce';

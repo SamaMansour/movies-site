@@ -49,7 +49,7 @@ function FilterPage(props) {
 		setData(true);
 
 	}
-	var dataResults=sortQueryDiscover?.data?.data?.results;
+	var dataResults=sortQueryDiscover?.data?.results;
 
 	const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genre_id}`).then((response) => {
 		const movies = response.data.results;
