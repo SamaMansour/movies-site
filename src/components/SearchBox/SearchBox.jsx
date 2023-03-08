@@ -3,20 +3,21 @@ import { fetchResults } from './index';
 import ListItem from './ListItem';
 import SearchInput from './SearchInput';
 import debounce from 'lodash.debounce';
-
-
-
-const fetchData = async (query, cb) => {
-	console.warn('fetching ' + query);
-	const res = await fetchResults(query);
-	cb(res);
-};
-
-const debouncedFetchData = debounce((query, cb) => {
-	fetchData(query, cb);
-}, 500);
+import { useDispatch } from "react-redux";
+import { applySearch } from '../../store/actions/searchActions';
 
 export default function SearchBox() {
+	const dispatch = useDispatch();
+	const fetchData = async (query, cb) => {
+		console.warn('fetching ' + query);
+		const res = await dispatch(applySearch(query));
+		console.log(res);
+		cb(res);
+	};
+	
+	const debouncedFetchData = debounce((query, cb) => {
+		fetchData(query, cb);
+	}, 500);
 	const [query, setQuery] = React.useState('');
 	const [results, setResults] = React.useState([]);
 	const img_url='http://image.tmdb.org/t/p/w500';
