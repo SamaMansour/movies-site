@@ -34,10 +34,11 @@ function Discover(props) {
 	console.log('data',data.results);
 	var wishListData;
 	const dispatch = useDispatch();
-	const addToWishList = async (id)=>{
-		wishListData = await dispatch(addFavourite(id));
+	const addToWishList = (data, id)=>{
+		wishListData = addFavourite(data, id);
 		console.log(wishListData);
 		wishList.push(wishListData);
+		console.log(wishList);
 		setSubData((wishList)=>wishList.concat(wishListData));
 		console.log(subData);
 
@@ -61,7 +62,7 @@ function Discover(props) {
 							data?.results?.map((item,index)=>(
 								console.log(item),
 								<div className="col-sm-4 mb-2">
-									<button onClick={()=>{ addToWishList(item.id);}}>
+									<button onClick={()=>{ addToWishList(data, item.id);}}>
 										<ButtonCard/> 
 									</button>
 									<Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><ItemCard img={`${img_url}${item.poster_path}`} title={item.title} overview={item.overview} id={item.id}/></Link>
