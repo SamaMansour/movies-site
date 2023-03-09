@@ -35,7 +35,7 @@ function Discover(props) {
 	var wishListData;
 	const dispatch = useDispatch();
 	const addToWishList = (data, id)=>{
-		wishListData = addFavourite(data, id);
+		wishListData = dispatch(addFavourite(data, id));
 		console.log(wishListData);
 		wishList.push(wishListData);
 		console.log(wishList);
