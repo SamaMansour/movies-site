@@ -10,9 +10,9 @@ export default function SearchBox() {
 	const dispatch = useDispatch();
 	const fetchData = async (query, cb) => {
 		console.warn('fetching ' + query); 
-		const res = dispatch(applySearch(query))
-		console.log('result of data' + res);
-		cb(res);
+		const res = await dispatch(applySearch(query));
+		console.log('result of data' + res.payload);
+		cb((res.payload));
 	};
 	
 	const debouncedFetchData = debounce((query, cb) => {
