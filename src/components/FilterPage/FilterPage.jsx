@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { fetchSort, fetchSortFilterDiscover,img_url, BASE_API, API_KEY } from '../../api';
 import ItemCard from '../ItemCard';
-import { applyFilters } from "../../store/actions/filterActions";
+import { applyFilters } from '../../store/actions/filterActions';
 function FilterPage(props) {
 	const [genre_id, setGenre_id] = useState([]);
 	const [dateTo, setDateTo] = useState('');
@@ -43,7 +43,7 @@ function FilterPage(props) {
 	);
 
 	function handleSearch(){
-		setTimeout(()=>console.log('data=',sortQueryDiscover.data.data.results),
+		setTimeout(()=>console.log('data=',sortQueryDiscover.data),
 			200);
 		console.log('query=',sortQueryDiscover);
 		setData(true);

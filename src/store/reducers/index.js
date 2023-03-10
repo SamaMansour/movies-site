@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import favouriteReducers from './favouriteReducers';
-import searchReducers from './searchReducers';
+import addFavouriteReducer from './favouriteReducers';
+import applySearchReducer from './searchReducers';
+import applyFilterReducer from './filterReducers';
 
 const rootReducer = combineReducers({
-	favourite: favouriteReducers,
-	search: searchReducers
+	favourite: addFavouriteReducer,
+	search: applySearchReducer,
+	filter: applyFilterReducer
   
 });
 

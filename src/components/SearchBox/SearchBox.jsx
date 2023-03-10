@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ListItem from './ListItem';
 import SearchInput from './SearchInput';
 import debounce from 'lodash.debounce';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { applySearch } from '../../store/actions/searchActions';
 
 export default function SearchBox() {
+	const [searchData, setSearchData] = useState([])
 	const dispatch = useDispatch();
 	const fetchData = async (query, cb) => {
-		console.warn('fetching ' + query);
-		const res = await dispatch(applySearch(query));
-		console.log(res);
+		console.warn('fetching ' + query); 
+		const res = dispatch(applySearch(query))
+		console.log('result of data' + res);
 		cb(res);
 	};
 	
@@ -26,7 +27,8 @@ export default function SearchBox() {
 		});
 	}, [query]);
   
-  
+
+	
 	return (
 		<div>
 			<SearchInput

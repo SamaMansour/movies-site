@@ -1,20 +1,17 @@
 import {
-	APPLY_FILTERS_REQUEST,
 	APPLY_FILTERS_SUCCESS, 
 	APPLY_FILTERS_FAIL } 
 	from '../actions/types';
 
-export const applySearchReducer = (state = {}, action) => {
+export const applyFilterReducer = (state = {}, action) => {
 	switch (action.type) {
-	case APPLY_FILTERS_REQUEST:
-		return { loading: true };
 	case APPLY_FILTERS_SUCCESS:
-		return { loading: false, success: true };
+		return {filters: action.payload};
 	case APPLY_FILTERS_FAIL:
-		return { loading: false, error: action.payload };
+		return action.payload;
 	default:
 		return state;
 	}
 };
 
-export default applySearchReducer;
+export default applyFilterReducer;

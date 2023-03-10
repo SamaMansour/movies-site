@@ -1,19 +1,18 @@
 import {
-	APPLY_SEARCH_REQUEST,
 	APPLY_SEARCH_SUCCESS, 
 	APPLY_SEARCH_FAIL } 
 	from '../actions/types';
 
+  let movies = { };
+
 export const applySearchReducer = (state = {}, action) => {
-	switch (action.type) {
-	case APPLY_SEARCH_REQUEST:
-		return { loading: true };
-	case APPLY_SEARCH_SUCCESS:
-		return { loading: false, success: true };
+	switch (action.type) {	
+  	case APPLY_SEARCH_SUCCESS:
+			return { movies: action.payload} ;
 	case APPLY_SEARCH_FAIL:
-		return { loading: false, error: action.payload };
-	default:
-		return state;
+			return { error: action.payload };
+  	default:
+  		return state;
 	}
 };
 
