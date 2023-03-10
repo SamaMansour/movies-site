@@ -36,7 +36,8 @@ function FilterPage(props) {
   
 	const sortQueryDiscover = useQuery(
 		['SortData', dateTo,dateFrom,genre_id, sliderValue, page],
-		() => dispatch(applyFilters(dateTo, dateFrom, genre_id, sliderValue, page)),
+		async () => {const res = await dispatch(applyFilters(dateTo, dateFrom, genre_id, sliderValue, page))
+	   return res.payload; },
 		{
 			retry: false,
 		}
@@ -49,7 +50,7 @@ function FilterPage(props) {
 		setData(true);
 
 	}
-	var dataResults=sortQueryDiscover?.data?.results;
+	var dataResults=sortQueryDiscover?.data;
 
 	const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genre_id}`).then((response) => {
 		const movies = response.data.results;
