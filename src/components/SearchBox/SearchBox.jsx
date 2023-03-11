@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { applySearch } from '../../store/actions/searchActions';
 
 export default function SearchBox() {
+	const res = useSelector(state => state.search.movies);
 	const [searchData, setSearchData] = useState([])
 	const dispatch = useDispatch();
 	const fetchData = async (query, cb) => {
 		console.warn('fetching ' + query); 
-		const res = await dispatch(applySearch(query));
-		console.log('result of data' + res.payload);
-		cb((res.payload));
+		await dispatch(applySearch(query));
+		console.log('result of data' + res);
+		cb((res));
 	};
 	
 	const debouncedFetchData = debounce((query, cb) => {

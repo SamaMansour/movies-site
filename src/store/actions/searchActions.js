@@ -12,7 +12,7 @@ export const applySearch = (query) => async (dispatch) => {
     const res = await fetch(url);
     const data = await res.json();
  
-    return dispatch({
+    dispatch({
       type: APPLY_SEARCH_SUCCESS ,
       payload: data,
 

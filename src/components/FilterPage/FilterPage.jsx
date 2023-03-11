@@ -33,11 +33,11 @@ function FilterPage(props) {
 	};
 
 	const dispatch = useDispatch();
-  
+  const res = useSelector(state => state.filter.filters);
 	const sortQueryDiscover = useQuery(
 		['SortData', dateTo,dateFrom,genre_id, sliderValue, page],
-		async () => {const res = await dispatch(applyFilters(dateTo, dateFrom, genre_id, sliderValue, page))
-	   return res.payload; },
+		async () => { await dispatch(applyFilters(dateTo, dateFrom, genre_id, sliderValue, page));
+	   return res; },
 		{
 			retry: false,
 		}

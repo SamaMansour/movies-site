@@ -10,7 +10,7 @@ export const applyFilters = (dateTo, dateFrom, genreId, sliderValue, page) => as
 		const data = await res.data.results;
 		console.log(data);
   
-		return dispatch({
+		dispatch({
 			type: APPLY_FILTERS_SUCCESS,
 			payload: data,
 

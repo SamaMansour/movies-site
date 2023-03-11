@@ -4,11 +4,16 @@ import {
 
 } from '../actions/types';
 
+const initialState = {
+    items: []
+};
 
-export const addFavouriteReducer = (state = '', action) => {
+export const addFavouriteReducer = (state = initialState, action) => {
 	switch (action.type) {
 	case ADD_FAVOURITE_SUCCESS:
-		return action.payload;
+		return {
+      items: action.payload
+      }
 	case ADD_FAVOURITE_FAIL:
 		return action.payload;
 	default:
