@@ -8,6 +8,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Details from './components/MovieDetail/Details';
 import Popular from'./views/Popular';
+import RegisterForm from './views/RegisterForm';
+import SigninForm from './views/SigninForm';
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 function App() {
 	return (
@@ -18,7 +22,8 @@ function App() {
 					<Nav className="me-auto">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Nav.Link href="/popular">Popular</Nav.Link>
-						<Nav.Link href="/login">Top Rated</Nav.Link>
+						<Nav.Link href="/login">Login</Nav.Link>
+						<Nav.Link href="/signup">Signup</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>
@@ -27,6 +32,10 @@ function App() {
 					<Route path='/' element={<Home/>}/>
 					<Route path='/detail/:movieId' element={<Details/>}/>
 					<Route path='/popular' element={<Popular/>}/>
+					<Route path='/signup' element={<RegisterForm/>}/>
+					<Route path='/login' element={<SigninForm/>}/>
+
+
 				</Routes>
 			</BrowserRouter>
 		</>

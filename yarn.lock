@@ -6436,6 +6436,13 @@ ccount@^2.0.0:
   resolved "https://registry.npmjs.org/ccount/-/ccount-2.0.1.tgz"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
 
+chakra-dayzed-datepicker@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.npmjs.org/chakra-dayzed-datepicker/-/chakra-dayzed-datepicker-0.2.7.tgz#12ff4b669bb9b44b7a2cb5de5b139cacfabdf9fb"
+  integrity sha512-kmKx0Bvyw7XrrOm+kIJVAVUy2L9IWmuz0oQpPcBfI5A3l2BLXASPSBdlbwbHi6tSHNprW7lxY8K2xWytNUkjlw==
+  dependencies:
+    react-focus-lock "^2.9.2"
+
 chalk@^2.0.0, chalk@^2.4.1:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -14188,6 +14195,11 @@ react-heart@^1.0.6:
     react "^17.0.1"
     styled-components "^5.2.1"
 
+react-hook-form@^7.43.5:
+  version "7.43.5"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.43.5.tgz#b320405594f1506d8d57b954383166d4ff563778"
+  integrity sha512-YcaXhuFHoOPipu5pC7ckxrLrialiOcU91pKu8P+isAcXZyMgByUK9PkI9j5fENO4+6XU5PwWXRGMIFlk9u9UBQ==
+
 react-inspector@^5.1.0:
   version "5.1.1"
   resolved "https://registry.npmjs.org/react-inspector/-/react-inspector-5.1.1.tgz"
@@ -14246,7 +14258,7 @@ react-query@^3.39.3:
 
 react-redux@^8.0.5:
   version "8.0.5"
-  resolved "https://registry.npmjs.org/react-redux/-/react-redux-8.0.5.tgz"
+  resolved "https://registry.npmjs.org/react-redux/-/react-redux-8.0.5.tgz#e5fb8331993a019b8aaf2e167a93d10af469c7bd"
   integrity sha512-Q2f6fCKxPFpkXt1qNRZdEDLlScsDWyrgSj0mliK59qU6W5gvBiKkdMEG2lJzhd1rCctf0hb6EtePPLZ2e0m1uw==
   dependencies:
     "@babel/runtime" "^7.12.1"
