@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
+import { signUp } from '../store/actions/authAction'
 
 import {
   FormErrorMessage,
@@ -15,7 +16,7 @@ import {
 
 const RegisterForm = (props) => {
  
-
+  
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [username, setUsername] = useState('');
 
@@ -27,9 +28,13 @@ const RegisterForm = (props) => {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
+
   const dispatch = useDispatch();
 
-  const onSubmitHandler = () => {
+  const handleSignup = async () => {
+    console.log("hello");
+    await dispatch(signUp({username, password}));
+    console.log("done");
       
 
     };
@@ -39,7 +44,7 @@ const RegisterForm = (props) => {
       <CSSReset />
       <Box p={12}>
       <h2> Signup </h2>
-      <form onSubmit= {onSubmitHandler}>
+      <form>
           <FormControl>
             <FormLabel>Username</FormLabel>
             <Input type="text" data-testid="username" placeholder="test-username" value={username} onChange={handleUsernameChange} />
@@ -48,7 +53,7 @@ const RegisterForm = (props) => {
             <FormLabel>Password</FormLabel>
             <Input type="password" data-testid="password" placeholder="*******"  value={password} onChange={handlePasswordChange} />
           </FormControl>
-          <Button width="full" mt={4} type="submit">
+          <Button width="full" mt={4} type="submit" onClick={handleSignup}>
             Register
           </Button>
       </form>
