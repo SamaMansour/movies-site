@@ -2,7 +2,7 @@ import axios from "axios";
 import * as types from "./types"
 
 
-export const signUp = ({username, password}) => async dispatch => {
+export const signUp = (username, password) => async dispatch => {
   try {
     const token = await axios.post("http://localhost:1337/auth/signup", { "email": username, "password": password })
 
@@ -38,5 +38,6 @@ export const signIn = ({username, password}) => async dispatch => {
     console.log(error)
   }
 }
+
 
 

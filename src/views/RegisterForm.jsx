@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { signUp } from '../store/actions/authAction'
+import axios from "axios";
 
 import {
   FormErrorMessage,
@@ -31,9 +32,18 @@ const RegisterForm = (props) => {
 
   const dispatch = useDispatch();
 
-  const handleSignup = async () => {
+  const handleSignup = (username, password) => {
     console.log("hello");
-    await dispatch(signUp({username, password}));
+    //dispatch(signUp(username, password));
+    axios.post("http://localhost:1337/auth/signup", 
+    {
+    "email": username,
+    "password": password
+
+    },
+     {}
+
+)
     console.log("done");
       
 
@@ -44,7 +54,7 @@ const RegisterForm = (props) => {
       <CSSReset />
       <Box p={12}>
       <h2> Signup </h2>
-      <form>
+      <form onSubmit= {handleSignup(username, password)}>
           <FormControl>
             <FormLabel>Username</FormLabel>
             <Input type="text" data-testid="username" placeholder="test-username" value={username} onChange={handleUsernameChange} />
@@ -53,7 +63,7 @@ const RegisterForm = (props) => {
             <FormLabel>Password</FormLabel>
             <Input type="password" data-testid="password" placeholder="*******"  value={password} onChange={handlePasswordChange} />
           </FormControl>
-          <Button width="full" mt={4} type="submit" onClick={handleSignup}>
+          <Button width="full" mt={4} type="submit">
             Register
           </Button>
       </form>

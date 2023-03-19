@@ -9,3 +9,5 @@ export const APPLY_FILTERS_FAIL = 'APPLY_FILTERS_FAIL';
 
 export const SIGN_UP = "SIGN_UP";
 export const SIGN_IN = "SIGN_IN";
+export const ADD_FAVOURITE= "ADD_FAVOURITE"
+export const FETCH_FAVOURITES = "FETCH_FAVOURITES"
