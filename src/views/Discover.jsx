@@ -9,7 +9,7 @@ import SlideshowWithPagination from 'react-slideshow-with-pagination';
 import Slider from '@ant-design/react-slick';
 import sliderSettings from '../components/Slider';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavourite } from '../store/actions/favouriteActions';
+import { addFavourite, loadFavourites} from '../store/actions/favouriteActions';
 
 function Discover(props) {
 	const [data, setData] = useState([]);
@@ -32,7 +32,7 @@ function Discover(props) {
 	}, []);
   
 	console.log('data',data.results);
-	var wishListData = useSelector(state => state.favourite.items);
+	var wishListData = loadFavourites();
 	const dispatch = useDispatch();
 	const addToWishList = (data, id)=>{
 		dispatch(addFavourite(data, id));

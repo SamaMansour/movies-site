@@ -19,8 +19,9 @@ import * as types from "./types"
 import { setHeaders } from "../../utils"
 
 export const loadFavourites = () => async (dispatch, getState) => {
-  const userId = getState().auth._id
-  const favourites = await axios.get(`/favourites/${userId}`, setHeaders())
+  //const userId = getState().auth._id
+  const userId = '6414363497c7296fc8418e70'
+  const favourites = await axios.get(`http://localhost:1337/favourites/${userId}`, setHeaders())
 
   if (favourites.data) {
     dispatch({
@@ -33,9 +34,12 @@ export const loadFavourites = () => async (dispatch, getState) => {
   }
 }
 
-export const addFavourite = favourite => async (dispatch, getState) => {
-  const userId = getState().auth._id
-  await axios.post("/favourites", { ...favourite, userId }, setHeaders())
+export const addFavourite =  (data, id) => async (dispatch, getState) => {
+  const res = data.results.find(item => item.id === id);
+  //const userId = getState().auth._id
+  const userId = '6414363497c7296fc8418e70'
+
+  await axios.post("http://localhost:1337/favourites", {"title": res.title, "overview": res.overview, "userId": userId }, setHeaders())
 
   dispatch({
     type: types.ADD_FAVOURITE

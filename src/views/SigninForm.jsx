@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useForm, HookForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { signIn } from '../store/actions/authAction';
 
 import {
   FormErrorMessage,
@@ -19,27 +21,23 @@ import {
 const SigninForm = (props) => {
 
   
-  const handleLogin = (username, password) =>{
-      axios.post("http://localhost:1337/auth/login", 
-    {
-    "email": username,
-    "password": password
-
-    },
-    );
-
-      navigate('/');
-
-  }
+  
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [username, setUsername] = useState('');
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  const handleLogin = (username, password) =>{
+    dispatch(signIn(username, password));
+    navigate("/");
+
+  }
 
 
   return (
@@ -47,7 +45,7 @@ const SigninForm = (props) => {
       <CSSReset />
       <Box p={12}>
         <h2> Login </h2>
-        <form onSubmit = {handleLogin(username, password)}>
+        <form onSubmit = {()=> handleLogin(username, password)}>
         <FormControl>
               <FormLabel>Username</FormLabel>
               <Input type="text" placeholder="test-username" value={username} onChange={handleUsernameChange} />

@@ -34,16 +34,7 @@ const RegisterForm = (props) => {
 
   const handleSignup = (username, password) => {
     console.log("hello");
-    //dispatch(signUp(username, password));
-    axios.post("http://localhost:1337/auth/signup", 
-    {
-    "email": username,
-    "password": password
-
-    },
-     {}
-
-)
+    dispatch(signUp(username, password));
     console.log("done");
       
 
@@ -54,7 +45,7 @@ const RegisterForm = (props) => {
       <CSSReset />
       <Box p={12}>
       <h2> Signup </h2>
-      <form onSubmit= {handleSignup(username, password)}>
+      <form onSubmit= {()=>handleSignup(username, password)}>
           <FormControl>
             <FormLabel>Username</FormLabel>
             <Input type="text" data-testid="username" placeholder="test-username" value={username} onChange={handleUsernameChange} />

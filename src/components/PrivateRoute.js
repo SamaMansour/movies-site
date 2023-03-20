@@ -1,11 +1,11 @@
-import { useAuth } from './useAuth';
-import { useLocation } from "react-router-dom"
+import useAuth from './useAuth';
+import { useLocation, Navigate } from "react-router-dom"
 
 export default function PrivateRoute({ children }) {
   const location = useLocation();
   const auth = useAuth();
 
-  if (auth === undefined) return null; // or loading spinner/etc...
+  if (auth === true) return null;
 
   return auth
     ? children

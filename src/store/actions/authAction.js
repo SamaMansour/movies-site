@@ -1,20 +1,17 @@
 import axios from "axios";
 import * as types from "./types"
+import cookies from "react-cookies";
 
 
 export const signUp = (username, password) => async dispatch => {
   try {
-    const token = await axios.post("http://localhost:1337/auth/signup", { "email": username, "password": password })
+    const { data} = await axios.post("http://localhost:1337/auth/signup", { "email": username, "password": password })
 
-    localStorage.setItem("token", token)
-
-
-    let data = {};
 
 
     dispatch({
       type: types.SIGN_UP,
-      payload: token
+      payload: data
     })
 
     console.log("sent")
@@ -24,11 +21,11 @@ export const signUp = (username, password) => async dispatch => {
   }
 }
 
-export const signIn = ({username, password}) => async dispatch => {
+export const signIn = (username, password) => async dispatch => {
   try {
     const token = await axios.post("http://localhost:1337/auth/login", {"email": username, "password": password})
 
-    localStorage.setItem("token", token)
+    cookies.setItem("token", token)
 
     dispatch({
       type: types.SIGN_IN,
