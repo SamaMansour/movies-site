@@ -30,11 +30,13 @@ function App() {
 			</Navbar>
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<Home/>}/>
+					<Route path='/' element={<PrivateRoute><Home/></PrivateRoute>}/>
 					<Route path='/detail/:movieId' element={<Details/>}/>
 					<Route path='/popular' element={<PrivateRoute><Popular/></PrivateRoute>}/>
 					<Route path='/signup' element={<RegisterForm/>}/>
 					<Route path='/login' element={<SigninForm/>}/>
+					<Route path='/auth' element={<Home/>}/>
+
 
 
 				</Routes>

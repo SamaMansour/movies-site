@@ -11,13 +11,12 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SIGN_IN:
-    case types.SIGN_UP:
+    //case types.SIGN_UP:
       const user = jwtDecode(action.payload)
 
       return {
         ...state,
         token: action.payload,
-        name: user.name,
         email: user.email,
         _id: user._id
       }

@@ -23,9 +23,12 @@ export const signUp = (username, password) => async dispatch => {
 
 export const signIn = (username, password) => async dispatch => {
   try {
-    const token = await axios.post("http://localhost:1337/auth/login", {"email": username, "password": password})
+    const token = await axios.post("http://localhost:1337/auth/login", {"email": username, "password": password});
 
-    cookies.setItem("token", token)
+    if(token != undefined){
+
+    cookies.save("token", token);
+  }
 
     dispatch({
       type: types.SIGN_IN,
