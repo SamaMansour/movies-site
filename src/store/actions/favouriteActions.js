@@ -38,7 +38,7 @@ export const addFavourite =  (data, id) => async (dispatch, getState) => {
   const res = data.results.find(item => item.id === id);
   const userId = '6414363497c7296fc8418e70'
 
-  const resData = await axios.post("http://localhost:1337/favourites", {"title": res.title, "overview": res.overview,"userId": userId }, setHeaders());
+  const resData = await axios.post("http://localhost:1337/favourites", {"title": res.title, "overview": res.overview, "posterPath": res.posterPath, "userId": userId }, setHeaders());
 
   dispatch({
     type: types.ADD_FAVOURITE,

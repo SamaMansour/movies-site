@@ -13,6 +13,7 @@ import SigninForm from './views/SigninForm';
 import { Provider } from "react-redux";
 import store from "./store/index";
 import PrivateRoute from "./components/PrivateRoute";
+import Cookies from "js-cookie";
 
 function App() {
 	return (
@@ -25,7 +26,7 @@ function App() {
 						<Nav.Link href="/popular">Popular</Nav.Link>
 						<Nav.Link href="/login">Login</Nav.Link>
 						<Nav.Link href="/signup">Signup</Nav.Link>
-						<Nav.Link href="/signup">Signout</Nav.Link>
+						<Nav.Link href="/login" onClick={()=>Cookies.remove("token")}>Signout</Nav.Link>
 
 					</Nav>
 				</Container>
