@@ -7,13 +7,11 @@ export const addFavouriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_FAVOURITES:
       return {
-        ...state,
-        favourites: action.payload.favourites
+        favourites: action.payload
       }
     case types.ADD_FAVOURITE:
-      return {
-        ...state
-      }
+      return action.payload
+      
     default:
       return state
   }

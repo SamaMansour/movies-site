@@ -17,9 +17,10 @@
 import axios from "axios"
 import * as types from "./types"
 import { setHeaders } from "../../utils"
+import { useSelector } from "react-redux";
 
 export const loadFavourites = () => async (dispatch, getState) => {
-  //const userId = getState().auth._id
+  //const userId = useSelector(state => state.auth._id)
   const userId = "6414363497c7296fc8418e70";
   const favourites = await axios.get(`http://localhost:1337/favourites/${userId}`, setHeaders())
 
@@ -35,14 +36,14 @@ export const loadFavourites = () => async (dispatch, getState) => {
 
 export const addFavourite =  (data, id) => async (dispatch, getState) => {
   const res = data.results.find(item => item.id === id);
-  //const userId = getState().auth._id
   const userId = '6414363497c7296fc8418e70'
 
-  await axios.post("http://localhost:1337/favourites", {"title": res.title, "overview": res.overview, "userId": userId }, setHeaders())
+  const resData = await axios.post("http://localhost:1337/favourites", {"title": res.title, "overview": res.overview,"userId": userId }, setHeaders());
 
   dispatch({
-    type: types.ADD_FAVOURITE
+    type: types.ADD_FAVOURITE,
+    payload: resData
   })
 
-  dispatch(loadFavourites())
+  dispatch(loadFavourites());
 }
