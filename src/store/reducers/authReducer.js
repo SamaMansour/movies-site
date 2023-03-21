@@ -1,8 +1,9 @@
 import * as types from "../actions/types"
 import jwtDecode from "jwt-decode"
+import Cookies from 'js-cookie';
 
 const initialState = {
-  token: localStorage.getItem("token"),
+  token: Cookies.get("token"),
   name: null,
   email: null,
   _id: null

@@ -1,23 +1,21 @@
-import {
-  ADD_FAVOURITE_SUCCESS,
-  ADD_FAVOURITE_FAIL,
-
-} from '../actions/types';
-
+import * as types from "../actions/types"
 const initialState = {
-    items: []
+    favourites: []
 };
 
 export const addFavouriteReducer = (state = initialState, action) => {
   switch (action.type) {
-  case ADD_FAVOURITE_SUCCESS:
-    return {
-      items: action.payload
+    case types.FETCH_FAVOURITES:
+      return {
+        ...state,
+        favourites: action.payload.favourites
       }
-  case ADD_FAVOURITE_FAIL:
-    return action.payload;
-  default:
-    return state;
+    case types.ADD_FAVOURITE:
+      return {
+        ...state
+      }
+    default:
+      return state
   }
 };
 

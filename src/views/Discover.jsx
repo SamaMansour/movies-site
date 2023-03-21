@@ -32,7 +32,7 @@ function Discover(props) {
 	}, []);
   
 	console.log('data',data.results);
-	var wishListData = loadFavourites();
+	var wishListData = useSelector(state => state.favourite.favourites);
 	const dispatch = useDispatch();
 	const addToWishList = (data, id)=>{
 		dispatch(addFavourite(data, id));
